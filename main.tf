@@ -150,10 +150,5 @@ resource "aws_eks_node_group" "eks_nodes" {
     min_size     = 2
   }
 
-  remote_access {
-    ec2_ssh_key               = "eks-key" # key pair name
-    source_security_group_ids = [aws_security_group.node_sg.id]
-  }
-
   depends_on = [aws_eks_cluster.eks_cluster, aws_iam_role.node_role]
 }
