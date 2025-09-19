@@ -124,6 +124,7 @@ resource "aws_eks_cluster" "eks_cluster" {
   name     = "my-eks-cluster"
   role_arn = aws_iam_role.eks_role.arn
   # role_arn = var.eks_role_arn
+  enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"] # CloudWatch logging
 
   vpc_config {
     subnet_ids         = aws_subnet.eks_subnet[*].id
@@ -144,8 +145,8 @@ resource "aws_eks_node_group" "eks_nodes" {
   instance_types = ["t3.micro"]
 
   scaling_config {
-    desired_size = 3
-    max_size     = 4
+    desired_size = 2
+    max_size     = 3
     min_size     = 2
   }
 
