@@ -1,0 +1,1 @@
+aws eks --region ap-southeast-1 update-kubeconfig --name serious-hiphop-sparrow
